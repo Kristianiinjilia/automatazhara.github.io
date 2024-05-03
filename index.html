@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scientific Number Input</title>
+    <video autoplay muted loop id="bg-video">
+        <source src="BGG.mp4" type="video/mp4">
+    </video>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden; /* Menyembunyikan overflow agar video tidak terlihat terpotong */
+        }
+
+        #bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            border-radius: 20px; /* Mengubah border-radius */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            background-color: #fbc9c9;
+            max-width: 400px;
+            width: 90%;
+            margin-top: 20px;
+            position: relative; /* Menetapkan posisi relatif agar z-index bekerja dengan benar */
+            z-index: 1; /* Mengatur z-index agar konten tetap di atas latar belakang video */
+        }
+
+        input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ced4da;
+            border-radius: 20px; /* Mengubah border-radius */
+            margin-bottom: 10px;
+            margin-right: 5px;
+            display: inline-block;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4f7dfc;
+            color: #fffab7;
+            border: none;
+            border-radius: 20px; /* Mengubah border-radius */
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #5755fe;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        #name-container {
+            text-align: center;
+            background-color: #f8f4ec;
+            padding: 10px;
+            border-radius: 20px; /* Mengubah border-radius */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            max-width: 400px;
+            width: 90%;
+            position: relative; /* Menetapkan posisi relatif agar z-index bekerja dengan benar */
+            z-index: 1; /* Mengatur z-index agar konten tetap di atas latar belakang video */
+        }
+
+        #name-container h3 {
+            margin: 5px 0;
+        }
+
+        h1 {
+            color: #f11a1a;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="name-container">
+        <h3>Name : Zhara Injilia Kristiani Dalentang</h3>
+        <h3>NIM : 221011060130</h3>
+        <h3>Information System Class C</h3>
+    </div>
+    <div class="container">
+        <h1>Scientific Number Input</h1>
+        <h2>Input Scientific Number</h2>
+        <input type="text" id="scientificNumber" placeholder="Enter scientific number...">
+        <button onclick="acceptNumber()"><i class="fas fa-check"></i> Accept</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function acceptNumber() {
+            var scientificNumberInput = document.getElementById("scientificNumber").value;
+            var parsedNumber = parseFloat(scientificNumberInput);
+            if (!isNaN(parsedNumber)) {
+                document.getElementById("result").innerHTML = `<span style="color: #15f5ba;"><i class="fas fa-check-circle"></i> Accepted Number: ${parsedNumber}</span>`;
+            } else {
+                document.getElementById("result").innerHTML = `<span style="color: #f11a1a;"><i class="fas fa-times-circle"></i> Invalid input. Please enter a valid scientific number.</span>`;
+            }
+        }
+    </script>
+</body>
+</html>
